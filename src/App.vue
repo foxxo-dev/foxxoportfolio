@@ -4,9 +4,9 @@
       <img src="@/assets/logolight.svg" alt="Logo" />
     </div>
     <nav>
-      <a>Home</a>
-      <a>Web Stack</a>
-      <a>Projects</a>
+      <router-link to="/">Home</router-link>
+      <router-link to="/webstack">Web Stack</router-link>
+      <router-link to="/projects">Projects</router-link>
     </nav>
     <div id="sideContainer">
       <div id="hamburgerMenuIcon">☰</div>
@@ -16,7 +16,22 @@
 
   <RouterView id="pageContainer" />
 
-  <!-- <ProjectCarousel /> -->
+  <footer>
+    <div class="footerContainer">
+      <span class="footerText">© 2025 Adam Buksowicz. All rights reserved.</span>
+      <!-- CC BY NC -->
+      <br />
+      <span class="footerText">
+        This work is licensed under a
+        <a
+          href="https://creativecommons.org/licenses/by-nc/4.0/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Creative Commons Attribution-NonCommercial 4.0 International License</a
+        >.
+      </span>
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -33,16 +48,23 @@ export default {
 
 <style scoped>
 #pageContainer {
-  --page-offset: 0.5rem;
+  --page-offset: 1rem;
 }
 #navbar {
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: calc(100vw - 6rem);
+  width: 100vw;
   margin-inline: auto;
   height: 3.5rem;
-  margin-top: 0.5rem;
+  padding-top: 1.5rem;
+  left: 50%;
+  padding-inline: 3rem;
+  transform: translateX(-50%);
+  background: black;
+  z-index: 5;
+  padding-bottom: 1.5rem;
 }
 nav {
   display: flex;
@@ -78,17 +100,35 @@ button {
   display: none;
 }
 #pageContainer {
-  margin-top: var(--page-offset);
+  margin-top: calc(var(--page-offset) + 3.5rem);
   overflow: auto;
   width: calc(100vw - 2rem);
   margin-inline: auto;
   border-radius: 2.5rem 2.5rem 0 0;
-  height: calc(100vh - 4rem - var(--page-offset));
+  min-height: calc(100vh - 4rem - var(--page-offset));
 }
 img {
   width: 2.5rem;
   height: 2.5rem;
   object-fit: contain;
+}
+footer {
+  background: linear-gradient(to top, #22aaff71 0%, transparent 100%);
+  color: #ffffff;
+  padding: 3rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  height: 15rem;
+  text-align: center;
+}
+.footerText {
+  font-weight: 500;
+}
+footer a {
+  color: #fff;
+  text-decoration: underline;
 }
 @media (max-width: 600px) {
   nav {
@@ -98,5 +138,4 @@ img {
     display: block;
   }
 }
-
 </style>
