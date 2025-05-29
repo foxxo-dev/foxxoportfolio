@@ -110,6 +110,7 @@ export default {
 </script>
 <style scoped>
 #landing {
+  position: relative;
   height: calc(100vh - 5rem);
   width: 100%;
   background: linear-gradient(to bottom, #22aaff 0%, #22aaff15 80%, transparent 100%);
@@ -117,7 +118,25 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  z-index: 0;
 }
+
+#landing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E");
+  z-index: 1;
+  pointer-events: none;
+
+
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 90%);
+  mask-image: linear-gradient(to bottom, black 40%, transparent 90%);
+  mask-composite: intersect;
+  -webkit-mask-composite: destination-in;
+}
+
 #rating {
   background: white;
   color: black;
