@@ -3,7 +3,7 @@
     <div id="scrollContainer" ref="scrollContainer" @wheel="handleWheel">
       <div id="projectsWrapper">
         <div v-for="project in projects" :key="project.id" class="project">
-          <div class="frame" :class="project.colorClass">
+          <div class="frame">
             <div class="logo">{{ project.logo }}</div>
             <span class="title">{{ project.name }}</span>
             <span class="description">{{ project.description }}</span>
@@ -12,7 +12,7 @@
                 {{ tag }}
               </div>
             </div>
-            <button class="cta-btn" :class="project.colorClass">Try now for free</button>
+            <button class="cta-btn">Try now, for free!</button>
           </div>
         </div>
 
@@ -31,7 +31,13 @@
     </div>
 
     <div class="navigation">
-      <button @click="scrollLeft" class="nav-btn" :disabled="currentPage === 0">←</button>
+      <button @click="scrollLeft" class="nav-btn" :disabled="currentPage === 0">
+        <img
+          src="@/assets/icons/arrow-down.svg"
+          alt="Left Arrow"
+          style="transform: rotate(90deg)"
+        />
+      </button>
       <div id="pagesIndicator">
         <div
           v-for="(_, index) in totalPages"
@@ -42,7 +48,11 @@
         ></div>
       </div>
       <button @click="scrollRight" class="nav-btn" :disabled="currentPage === totalPages - 1">
-        →
+        <img
+          src="@/assets/icons/arrow-down.svg"
+          alt="Left Arrow"
+          style="transform: rotate(-90deg)"
+        />
       </button>
     </div>
   </div>
@@ -55,85 +65,51 @@ export default {
     return {
       projects: [
         {
-          id: 1,
-          name: 'AI Headshot Generator',
+          id: -1,
+          name: 'University.App',
           description:
-            'AI Headshot Generator is an easy and quick tool that can effortlessly transform your everyday snapshots into AI professional photos',
-          tags: ['AI', 'React', 'Node.js'],
-          logo: '🤖',
-          colorClass: 'green-gradient',
+            'A web application designed to help students manage their university life, including schedules, assignments, and grades.',
+          tags: ['Vue', 'University', 'Backend', 'AI'],
+          logo: '🏫',
+        },
+        {
+          id: 0,
+          name: 'Study +',
+          description:
+            ' It is a tool that uses AI to assist with studying, providing summaries and explanations.',
+          tags: ['AI', 'Vue', 'API', 'Web App'],
+          logo: '📚',
+        },
+        {
+          id: 1,
+          name: 'Roasted Toasted',
+          description:
+            'Roast your friends, with a fun game! You have 30 seconds to type your roast, and take turns with your friends.',
+          tags: ['Game', 'Vanilla', 'Indev'],
+          logo: '🔥',
         },
         {
           id: 2,
-          name: 'Erase.bg',
-          description:
-            'Erase.bg is a smart AI background removal tool that lets you erase the background for FREE',
-          tags: ['AI', 'Python', 'OpenCV'],
-          logo: '🎨',
-          colorClass: 'pink-gradient',
+          name: 'ASW Navi',
+          description: 'A tool that helps you navigate through the complex hallways of ASW.',
+          tags: ['Navigator', 'Algorithm', 'Vue', 'PWA'],
+          logo: '🗺️',
         },
         {
           id: 3,
-          name: 'Upscale.media',
+          name: 'Party Play',
           description:
-            'Upscale.media is an AI image upscaling tool that lets you enlarge & enhance your images for FREE',
-          tags: ['AI', 'TensorFlow', 'Next.js'],
-          logo: '📸',
-          colorClass: 'blue-gradient',
-        },
-                {
-          id: 1,
-          name: 'AI Headshot Generator',
-          description:
-            'AI Headshot Generator is an easy and quick tool that can effortlessly transform your everyday snapshots into AI professional photos',
-          tags: ['AI', 'React', 'Node.js'],
-          logo: '🤖',
-          colorClass: 'green-gradient',
+            'Party Play is an all in one app, where you can either host a party or add your song to one!',
+          tags: ['Music', 'Vanilla', 'Spotify API', 'Realtime'],
+          logo: '🎶',
         },
         {
-          id: 2,
-          name: 'Erase.bg',
+          id: 4,
+          name: 'This is Poland',
           description:
-            'Erase.bg is a smart AI background removal tool that lets you erase the background for FREE',
-          tags: ['AI', 'Python', 'OpenCV'],
-          logo: '🎨',
-          colorClass: 'pink-gradient',
-        },
-        {
-          id: 3,
-          name: 'Upscale.media',
-          description:
-            'Upscale.media is an AI image upscaling tool that lets you enlarge & enhance your images for FREE',
-          tags: ['AI', 'TensorFlow', 'Next.js'],
-          logo: '📸',
-          colorClass: 'blue-gradient',
-        },
-                {
-          id: 1,
-          name: 'AI Headshot Generator',
-          description:
-            'AI Headshot Generator is an easy and quick tool that can effortlessly transform your everyday snapshots into AI professional photos',
-          tags: ['AI', 'React', 'Node.js'],
-          logo: '🤖',
-          colorClass: 'green-gradient',
-        },
-        {
-          id: 2,
-          name: 'Erase.bg',
-          description:
-            'Erase.bg is a smart AI background removal tool that lets you erase the background for FREE',
-          tags: ['AI', 'Python', 'OpenCV'],
-          logo: '🎨',
-          colorClass: 'pink-gradient',
-        },
-        {
-          id: 3,
-          name: 'Upscale.media',
-          description:
-            'Upscale.media is an AI image upscaling tool that lets you enlarge & enhance your images for FREE',
-          tags: ['AI', 'TensorFlow', 'Next.js'],
-          logo: '📸',
-          colorClass: 'blue-gradient',
+            'A simple website that showcases the beauty of Poland, with a focus on its culture, history, and natural beauty.',
+          tags: ['Mobile Only', 'Singlepage', 'UN Day'],
+          logo: '🇵🇱',
         },
       ],
       currentPage: 0,
@@ -185,13 +161,12 @@ export default {
   gap: 2rem;
   padding: 3rem 1rem;
   max-width: 100%;
-  color: white;
-  background-color: #0f0f0f;
+  color: black;
 }
 
 #scrollContainer {
   width: 100%;
-  max-width: 1200px;
+  width: 100%;
   overflow-x: hidden;
   scroll-behavior: smooth;
   position: relative;
@@ -239,7 +214,8 @@ export default {
   flex-direction: column;
   gap: 1rem;
   flex: 1;
-  background: #1a1a1a;
+  background: white;
+  color: black;
   border-radius: 16px;
   position: relative;
   overflow: hidden;
@@ -259,16 +235,8 @@ export default {
   -webkit-mask-composite: xor;
 }
 
-.green-gradient .frame::before {
-  background: linear-gradient(135deg, #4ade80, #22c55e);
-}
-
-.pink-gradient .frame::before {
-  background: linear-gradient(135deg, #ec4899, #8b5cf6);
-}
-
-.blue-gradient .frame::before {
-  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+.frame::before {
+  background: linear-gradient(135deg, #cacaca, #6f6f6f);
 }
 
 .logo {
@@ -279,13 +247,17 @@ export default {
 .title {
   font-weight: bold;
   font-size: 1.3rem;
-  color: white;
+  color: black;
   line-height: 1.3;
+}
+.seeAllProject .title {
+  color: white;
 }
 
 .description {
   font-size: 0.9rem;
-  color: #a1a1aa;
+  color: #000000;
+  opacity: 0.8;
   line-height: 1.5;
   flex-grow: 1;
 }
@@ -299,11 +271,11 @@ export default {
 
 .chip {
   padding: 0.3rem 0.8rem;
-  background-color: #374151;
+  background-color: #000;
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 500;
-  color: #d1d5db;
+  color: white;
 }
 
 .cta-btn {
@@ -314,31 +286,20 @@ export default {
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: linear-gradient(135deg, #4ade80, #22c55e);
+  background: linear-gradient(135deg, #5d5d5d, #000000);
   color: white;
   text-align: center;
 }
 
-.green-gradient .cta-btn {
-  background: linear-gradient(135deg, #4ade80, #22c55e);
-}
-
-.pink-gradient .cta-btn {
-  background: linear-gradient(135deg, #ec4899, #8b5cf6);
-}
-
-.blue-gradient .cta-btn {
-  background: linear-gradient(135deg, #3b82f6, #06b6d4);
-}
-
 .cta-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
+  box-shadow: 0 8px 25px rgba(215, 215, 215, 0.4);
 }
 
 /* See All Projects Styles */
 .seeAllProject .frame {
-  background: #262626;
+  background: black;
+  color: white;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -350,12 +311,17 @@ export default {
 
 .seeAllIcon {
   font-size: 4rem;
-  color: #6b7280;
+  color: white;
   margin-bottom: 1rem;
+}
+img {
+  width: 24px;
+  height: 24px;
 }
 
 .seeAllBtn {
-  background: linear-gradient(135deg, #6b7280, #4b5563);
+  background: linear-gradient(135deg, #8be4ff, #b0c5ff);
+  color: black;
 }
 
 .seeAllBtn:hover {
@@ -381,7 +347,7 @@ export default {
   justify-content: center;
   cursor: pointer;
   font-size: 1.2rem;
-  color: white;
+  color: black;
   transition: all 0.2s ease;
 }
 
@@ -404,17 +370,17 @@ export default {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #4b5563;
+  background-color: #5e5e5e;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .pageIndicator:hover {
-  background-color: #6b7280;
+  background-color: #7c7c7c;
 }
 
 .pageIndicator.active {
-  background-color: #22c55e;
+  background-color: #ffffff;
   width: 32px;
   border-radius: 4px;
 }

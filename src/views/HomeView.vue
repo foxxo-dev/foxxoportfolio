@@ -2,7 +2,13 @@
   <main>
     <div id="landing">
       <div id="rating">
-        <div id="starContainer">⭐⭐⭐⭐⭐</div>
+        <div id="starContainer">
+          <img src="@/assets/icons/star.svg" alt="Star Icon" />
+          <img src="@/assets/icons/star.svg" alt="Star Icon" />
+          <img src="@/assets/icons/star.svg" alt="Star Icon" />
+          <img src="@/assets/icons/star.svg" alt="Star Icon" />
+          <img src="@/assets/icons/star_gray.svg" alt="Gray Star Icon" />
+        </div>
         <span> Rated by {{ ratings }} happy clients </span>
       </div>
       <span id="slogan"> Bring your vision to life. </span>
@@ -10,23 +16,27 @@
         Hi! I am a developer from Poland. I love to code and enjoy flying in Microsoft Flight
         Simulator. I am also a designer, and I can design your website, or code it!
       </p>
-      <div id="arrowDown">v</div>
+    </div>
+    <div id="arrowDown" @click="scrollDown">
+      <img src="@/assets/icons/arrow-down.svg" alt="Arrow Down" />
     </div>
     <div id="trustedUs">
       <span> Trusted by: </span>
       <div id="trustedLogos">
-        <img src="@/assets/logos/nimoweb.svg" alt="Trusted Logo 1" />
+        <img src="@/assets/logos/UniversityLogo.png" alt="Trusted Logo 1" />
         <img src="@/assets/logos/nimoweb.svg" alt="Trusted Logo 2" />
-        <img src="@/assets/logos/nimoweb.svg" alt="Trusted Logo 3" />
-        <img src="@/assets/logos/nimoweb.svg" alt="Trusted Logo 4" />
-        <img src="@/assets/logos/nimoweb.svg" alt="Trusted Logo 5" />
+        <img src="@/assets/logos/studypluslogo.png" alt="Trusted Logo 3" />
+        <img src="@/assets/logos/partyplaylogo.png" alt="Trusted Logo 4" />
+        <img src="@/assets/logos/aswnavilogo.png" alt="Trusted Logo 5" />
       </div>
     </div>
     <h2 class="header">Explore technologies ——</h2>
     <div class="cardContainer rows1">
       <div class="card category">Categories</div>
       <div class="card">
-        <div class="card_tech">H</div>
+        <div class="card_tech">
+          <img src="@/assets/icons/html.svg" alt="HTML Icon" />
+        </div>
         <span class="card_title">Standard Web Development</span>
         <div class="card_description">
           <p>
@@ -41,7 +51,9 @@
         </div>
       </div>
       <div class="card">
-        <div class="card_tech">V</div>
+        <div class="card_tech">
+          <img src="@/assets/icons/vue.svg" alt="vue Icon" />
+        </div>
         <span class="card_title">Vue.js</span>
         <div class="card_description">
           <p>
@@ -58,7 +70,9 @@
         </div>
       </div>
       <div class="card">
-        <div class="card_tech">N</div>
+        <div class="card_tech">
+          <img src="@/assets/icons/node.svg" style="width: 2rem" alt="Node Icon" />
+        </div>
         <span class="card_title">Node.js</span>
         <div class="card_description">
           <p>
@@ -75,12 +89,27 @@
           <span class="card_pill">Multi-Purpouse</span>
         </div>
       </div>
+      <div class="card more">
+        <div class="spacer"></div>
+        <span class="tripledot">...</span>
+        <span class="card_title">More technologies</span>
+        <div class="spacer"></div>
+        <button class="card_pill" @click="$router.push('/technologies')">Explore</button>
+      </div>
     </div>
+    <div class="scroller"></div>
+    <h2 class="header">Projects ——</h2>
+    <p class="header_description">
+      Here are some of my projects. I have worked on many more, but these are the ones I am most
+      proud of. Click on the cards buttons to view the whole project.
+    </p>
+    <ProjectCarusel />
     <div class="scroller"></div>
   </main>
 </template>
 
 <script>
+import ProjectCarusel from '@/components/ProjectCarusel.vue'
 export default {
   name: 'HomeView',
   data() {
@@ -92,9 +121,18 @@ export default {
       ratingsClock: null,
     }
   },
+  components: {
+    ProjectCarusel,
+  },
   methods: {
     approachRatings() {
       this.ratings += Math.ceil((this.ratingsTotal - this.ratings) / 5)
+    },
+    scrollDown() {
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: 'smooth',
+      })
     },
   },
   mounted() {
@@ -109,6 +147,13 @@ export default {
 }
 </script>
 <style scoped>
+img {
+  max-width: 100%;
+  height: auto;
+}
+main {
+  position: relative;
+}
 #landing {
   height: calc(100vh - 5rem);
   width: 100%;
@@ -117,6 +162,10 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+#starContainer {
+  display: flex;
+  gap: 0.15rem;
 }
 #rating {
   background: white;
@@ -177,6 +226,11 @@ export default {
   font-size: 1.5rem;
   font-weight: bold;
 }
+.card_tech img {
+  width: 1.5rem;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
 .card_title {
   font-size: 1.3rem;
   font-weight: bold;
@@ -195,15 +249,36 @@ export default {
   background: black;
   color: white;
   padding: 0.2rem 1.3rem;
-  border-radius: 1vw;
+  border-radius: 10vw;
 }
-.category {
+.category,
+.more {
   grid-template-rows: 1fr;
   grid-template-columns: 1fr;
   place-items: center;
   background: transparent;
   color: white;
   opacity: 0.6;
+}
+.more {
+  grid-template-rows: auto auto 1fr auto;
+  opacity: 1;
+  border: 2px solid white;
+}
+.card .tripledot {
+  font-size: 5rem;
+  font-weight: bold;
+  opacity: 0.6;
+  text-align: center;
+  line-height: 0.5;
+}
+.card button {
+  background: white;
+  color: black;
+  padding: 0.5rem 1.5rem;
+
+  border: none;
+  cursor: pointer;
 }
 /* continuation */
 #description {
@@ -215,8 +290,14 @@ export default {
 }
 #arrowDown {
   position: absolute;
-  top: calc(100vh - 3rem);
+  top: calc(100vh - 10rem);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: white;
+  opacity: 0.8;
   cursor: pointer;
+  width: 2rem;
 }
 
 /* Trusted By Section */
@@ -240,6 +321,14 @@ export default {
   object-fit: contain;
 }
 .scroller {
-  height: 6rem;
+  height: 10rem;
+}
+/* Header Description */
+.header_description {
+  max-width: 60ch;
+  font-size: 1.2rem;
+  opacity: 0.8;
+  line-height: 1.6;
+  margin-top: 1rem;
 }
 </style>
