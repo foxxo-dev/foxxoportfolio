@@ -55,6 +55,16 @@ export default {
       currentFilter: 'all',
       webStackData: [
         {
+          name: 'University.App',
+          icon: '🏫',
+          description:
+            'A web application designed to help students manage their university life, including schedules, assignments, and grades.',
+          tags: ['Vue', 'Web App', 'University'],
+          category: 'Vue Web Apps',
+          href: 'https://university-app.foxxo.app',
+          special: 'Manage your university life!',
+        },
+        {
           name: 'Party Play',
           icon: '🎉',
           description:
