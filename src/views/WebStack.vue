@@ -219,7 +219,47 @@ export default {
           tags: ['Game Engine', 'GDScript', 'Open Source'],
           category: 'Game Development',
         },
-
+        //  arudino figma and git and PS and AI
+        {
+          name: 'Arduino',
+          icon: '🛠️',
+          description:
+            'An open-source electronics platform based on easy-to-use hardware and software, ideal for building interactive projects.',
+          tags: ['Electronics', 'Open Source', 'Prototyping'],
+          category: 'Hardware',
+        },
+        {
+          name: 'Figma',
+          icon: '🎨',
+          description:
+            'A web-based UI/UX design tool that allows for collaborative design and prototyping of user interfaces.',
+          tags: ['Design', 'UI/UX', 'Prototyping', 'Collaboration'],
+          category: 'Design Tools',
+        },
+        {
+          name: 'Git',
+          icon: '🐙',
+          description:
+            'A distributed version control system that allows developers to track changes in their code and collaborate with others.',
+          tags: ['Version Control', 'Collaboration', 'Code Management'],
+          category: 'Version Control',
+        },
+        {
+          name: 'Photoshop',
+          icon: '🖼️',
+          description:
+            'A powerful image editing software used for creating and manipulating images, graphics, and designs.',
+          tags: ['Image Editing', 'Graphics', 'Design'],
+          category: 'Design Tools',
+        },
+        {
+          name: 'Illustrator',
+          icon: '🖌️',
+          description:
+            'A vector graphics editor used for creating illustrations, logos, and complex graphics.',
+          tags: ['Vector Graphics', 'Illustration', 'Design'],
+          category: 'Design Tools',
+        },
         {
           name: 'OpenAPI (Swagger)',
           icon: '📃',

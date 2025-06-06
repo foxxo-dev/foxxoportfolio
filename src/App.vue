@@ -10,7 +10,9 @@
     </nav>
     <div id="sideContainer">
       <div id="hamburgerMenuIcon">☰</div>
-      <button id="contactButton">Contact</button>
+      <button id="contactButton" @click="$router.push('/contact')" style="cursor: pointer">
+        Contact
+      </button>
     </div>
   </div>
 
