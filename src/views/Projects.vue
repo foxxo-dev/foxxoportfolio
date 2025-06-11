@@ -75,6 +75,14 @@ export default {
           special: 'Start the party now!',
         },
         {
+          name: 'Alive Memories Photo',
+          icon: '',
+          description: 'A potfolio for one of my clients, as a fellow photographer!',
+          tags: ['Portfolio', 'Web App', 'Showcase'],
+          categroy: 'Vanilla Web Apps',
+          href: "https://alive-photo.netlify.app/"
+        },
+        {
           name: 'This is Poland',
           icon: '🇵🇱',
           description:
