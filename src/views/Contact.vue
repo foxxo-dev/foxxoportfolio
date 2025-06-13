@@ -201,7 +201,8 @@ export default {
         // Simulate form submission
         // Send a webhook to a discord
 
-        const webhookUrl = 'https://discord.com/api/webhooks/1380528993563971645/WsTh_Y8sJT-7oYKgtfhES9M1iXetsQi5Pt0diI7CMXO6mwjsPLcFgX0uHoH9LzvOMGWg'
+        const webhookUrl =
+          'https://discord.com/api/webhooks/1383172901603381439/a0rFFmOe6G9pQKWN9OjXG0PKlUvcMZsPTXoTA-CqWvCaDKFMRo6TsgjN081XS3BZPPiw'
         const payload = {
           content: `# New contact: ${this.form.name}\nEmail: ${this.form.email}\n\n## Subject: ${this.form.subject}\nMessage: ${this.form.message}\n-# ${new Date().toLocaleString()}`,
         }
