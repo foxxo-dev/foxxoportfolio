@@ -12,7 +12,7 @@
                 {{ tag }}
               </div>
             </div>
-            <button class="cta-btn">Try now, for free!</button>
+            <a :href="project.href" class="cta-btn">Try now, for free!</a>
           </div>
         </div>
 
@@ -71,6 +71,7 @@ export default {
             'A web application designed to help students manage their university life, including schedules, assignments, and grades.',
           tags: ['Vue', 'University', 'Backend', 'AI'],
           logo: '🏫',
+          href: 'https://example.com/university-app',
         },
         {
           id: 0,
@@ -79,6 +80,7 @@ export default {
             ' It is a tool that uses AI to assist with studying, providing summaries and explanations.',
           tags: ['AI', 'Vue', 'API', 'Web App'],
           logo: '📚',
+          href: 'https://study-plus.foxxo.app',
         },
         {
           id: 1,
@@ -87,6 +89,7 @@ export default {
             'Roast your friends, with a fun game! You have 30 seconds to type your roast, and take turns with your friends.',
           tags: ['Game', 'Vanilla', 'Indev'],
           logo: '🔥',
+          href: 'https://roastedtoasted.foxxo.app',
         },
         {
           id: 2,
@@ -94,6 +97,7 @@ export default {
           description: 'A tool that helps you navigate through the complex hallways of ASW.',
           tags: ['Navigator', 'Algorithm', 'Vue', 'PWA'],
           logo: '🗺️',
+          href: 'https://asw-navi.foxxo.app',
         },
         {
           id: 3,
@@ -102,6 +106,7 @@ export default {
             'Party Play is an all in one app, where you can either host a party or add your song to one!',
           tags: ['Music', 'Vanilla', 'Spotify API', 'Realtime'],
           logo: '🎶',
+          href: 'https://party-play.foxxo.app/',
         },
         {
           id: 4,
@@ -110,6 +115,7 @@ export default {
             'A simple website that showcases the beauty of Poland, with a focus on its culture, history, and natural beauty.',
           tags: ['Mobile Only', 'Singlepage', 'UN Day'],
           logo: '🇵🇱',
+          href: 'https://thisispoland.thelpro.studio',
         },
       ],
       currentPage: 0,
@@ -233,6 +239,7 @@ export default {
     linear-gradient(#fff 0 0);
   mask-composite: xor;
   -webkit-mask-composite: xor;
+  pointer-events: none;
 }
 
 .frame::before {
@@ -289,6 +296,7 @@ export default {
   background: linear-gradient(135deg, #5d5d5d, #000000);
   color: white;
   text-align: center;
+  text-decoration: none;
 }
 
 .cta-btn:hover {

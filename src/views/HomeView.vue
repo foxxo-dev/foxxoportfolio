@@ -94,7 +94,7 @@
         <span class="tripledot">...</span>
         <span class="card_title">More technologies</span>
         <div class="spacer"></div>
-        <button class="card_pill" @click="$router.push('/technologies')">Explore</button>
+        <button class="card_pill" @click="$router.push('/webstack')">Explore</button>
       </div>
     </div>
     <div class="scroller"></div>
