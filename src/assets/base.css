@@ -163,3 +163,34 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 13px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #22aaff;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  box-shadow: inset 0 0 6px rgba(0, 0, 255, 0.3);
+  transition:
+    border 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1d96e1;
+  border-radius: 10px;
+  border: 2.5px solid transparent;
+  background-clip: content-box;
+  box-shadow: inset 0 0 6px rgba(0, 0, 255, 0.3);
+}
